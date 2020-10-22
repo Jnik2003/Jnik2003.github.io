@@ -1,0 +1,250 @@
+$wrapWide: 1170px;//Ширина рабочей зоны
+$bgcolorGrey: #F3F3F3;
+$bgcolorMenu: #FBEFB9; //желтый
+
+$maxWidth: 1170;
+@mixin adaptiv-font($pcSize, $mobSize) {
+ $addSize: $pcSize - $mobSize;
+ $maxWidth: $maxWidth - 320;
+ font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+
+h1{
+	
+	@include adaptiv-font(50,32);
+}
+
+h2{
+	
+	@include adaptiv-font(40,30);
+	//margin-bottom: 0%;
+	margin-top: 0;	
+}
+h3{
+	
+	@include adaptiv-font(20,20);
+}
+li{
+	font-size: 16px;
+	font-family: "Roboto", sans-serif;
+}
+p{
+	font-size: 16px;
+	font-family: "Roboto", sans-serif;
+
+}
+
+body, html{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Helvetica Neue", sans-serif;
+	scroll-behavior: smooth;
+	user-select: none;
+}
+
+//Убрать обводку с кнопок и инпутов
+
+button, 
+button:active, 
+button:focus {
+    outline: none;
+}
+input:active, input:focus{
+	outline: none;
+	
+}
+textarea:active, textarea:focus{
+	outline: none;
+}
+
+//Убрать стрелки с инпутов
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+/* Firefox */
+input[type=number] {
+-moz-appearance:textfield;
+}
+.wrap{
+	max-width: $wrapWide;	
+	margin: 0 auto;
+	height: auto;
+
+}
+
+// =======Конец общий раздел==========
+
+// ========Начало header ==============
+// div{
+// 	border: 1px solid red;
+// }
+.header{
+	width: 100%;
+	height: 120px;
+	background-color: $bgcolorGrey;
+}
+.wrap_header{
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	justify-items: center;
+	align-items: center;
+
+}
+.header_logo{
+	
+		img{
+			width: 65%;
+	
+		}
+}
+.box1{
+justify-self: start;
+}
+.box2{
+justify-self: center;
+}
+.box3{
+justify-self: end;
+}
+
+// ======Начало меню=======
+.menu{
+	background-color: $bgcolorMenu;
+	width: 100%;
+	height: 50px;
+	position: fixed;
+}
+.wrap_menu{
+	height: 50px;
+	display: grid;	
+	grid-template-columns: repeat(6, 1fr);
+	justify-items: center;
+	align-items: center;
+}
+.menu_box{
+		width: 100%;
+		height: 100%;
+		display: flex;		
+		align-items: center;
+		justify-content: center;
+		transition: .3s;
+
+	a{
+		text-decoration: none;
+		color: black;
+		
+
+	}
+}
+.menu_box:hover{
+	background-color: #934B0B;
+		a{
+			color: white;
+		}	
+}	
+
+
+
+// =====Начало мобильное меню======
+
+.mobile_menu{
+	display: none;
+	background-color: $bgcolorMenu;
+	width: 100%;	
+	position: fixed;
+	height: auto;	
+
+}
+
+.hamburger{
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 10px 10px 10px;
+	
+
+}
+.mobile_menu_button{
+	width: 45px;
+	height: 45px;
+	cursor: pointer;
+	background-image: url(../img/header/bars-solid.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.mobile_menu_logo{
+	width: 150px;
+	height: 50px;
+}
+.wrap_mobile_menu{
+	position: absolute;
+	background-color: #FADE60; 
+	padding: 10px 10px 10px 10px;
+	width: 70%;
+	height: 70vh;
+	opacity: 0;
+		.menu_box{
+		width: 95%;
+		height: 7%;
+		display: flex;		
+		align-items: center;
+		justify-content: flex-start;
+		transition: .3s;
+		padding: 0 10px 0 10px;
+		}
+}
+.menu_visible{
+	opacity: 1;	
+}
+.mobile_menu_button{
+	
+}
+.mobile_menu_button_down{
+	width: 50px;
+	height: 50px;
+	background-image: url(../img/header/times-solid.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	transition: .3s;
+}
+
+//========Страницы========
+
+
+.page{
+	width: 100%;
+	height: 2200px;
+	background-color: grey;
+	padding: 70px 0 50px 0;
+}
+
+// ======Адаптивность=======
+
+@media all and (max-width: 768px){
+	
+	.menu{
+		display: none;
+	}
+	.mobile_menu{
+	display: block;
+}
+	.header{
+		display: none;
+	}
+	.wrap_mobile_menu{
+		.menu_box{
+			font-size: 18px;			
+		}
+	}
+
+}
+
+@media all and (max-width: 360px){
+
+
+	
+}
